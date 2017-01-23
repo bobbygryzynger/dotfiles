@@ -1,6 +1,11 @@
 # Source bash completion scripts.
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
+# Include bashrc file (if present).
+if [ -f ~/.bashrc ]; then
+  source ~/.bashrc
+fi
+
 # Add Homebrew bins to path.
 export PATH="/usr/local/sbin:$PATH"
 
@@ -35,10 +40,4 @@ else
     export PATH=$PATH:$HOME/.dvm
 fi
 
-vstr_regex="[^\.0-9]"
-printf "Current toolset:\n----------------\n"
-echo "drush: "$(drush --version | sed s/${vstr_regex}//g)
-echo "homebrew: "$(brew -v | sed -e 1s/${vstr_regex}//g -e '2,$s/.*//g')
-echo "node: "$(node -v | sed s/${vstr_regex}//g)
-echo "vagrant: "$(vagrant -v | sed s/${vstr_regex}//g)
-printf "\n----------------\n"
+
