@@ -4,10 +4,10 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # Get Homebrew's directory prefix.
-$brew_prefix=$(brew --prefix)
+brew_prefix=$(brew --prefix)
 
 # Source bash completion scripts.
-[ -f ${brew_prefix}/etc/bash_completion ]; then
+if [ -f ${brew_prefix}/etc/bash_completion ]; then
     . ${brew_prefix}/etc/bash_completion
 fi
 
