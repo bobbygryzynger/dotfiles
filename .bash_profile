@@ -1,13 +1,18 @@
-# Source bash completion scripts.
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
-
-# Include bashrc file (if present).
+# Include .bashrc file (if present).
 if [ -f ~/.bashrc ]; then
   source ~/.bashrc
 fi
 
+# Get Homebrew's directory prefix.
+$brew_prefix=$(brew --prefix)
+
+# Source bash completion scripts.
+[ -f ${brew_prefix}/etc/bash_completion ]; then
+    . ${brew_prefix}/etc/bash_completion
+fi
+
 # Add Homebrew bins to path.
-export PATH="/usr/local/sbin:$PATH"
+export PATH="${brew_prefix}/sbin:$PATH"
 
 # Set NVM directory and source its script.
 export NVM_DIR="$HOME/.nvm"
