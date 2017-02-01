@@ -45,4 +45,12 @@ else
     export PATH=$PATH:$HOME/.dvm
 fi
 
+function toolset () {
+    vstr_regex='[^\.0-9]'
+    ostr_regex='.*'
+    bins=('drush' 'brew' 'node' 'vagrant')
+    for bin in "${bins[@]}"; do
+        echo "${bin}: "$(${bin} --version | sed -e 1s/${vstr_regex}//g -e 2,\$s/${ostr_regex}//g)
+    done
+}
 
