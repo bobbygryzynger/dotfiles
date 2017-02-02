@@ -50,7 +50,11 @@ function toolset () {
     ostr_regex='.*'
     bins=('drush' 'brew' 'nvm' 'node' 'vagrant')
     for bin in "${bins[@]}"; do
-        echo "${bin}: "$(${bin} --version | sed -e 1s/${vstr_regex}//g -e 2,\$s/${ostr_regex}//g)
+        if [ ! -z $(command -v ${bin}) ]; then
+            echo "${bin}: "$(${bin} --version | sed -e 1s/${vstr_regex}//g -e 2,\$s/${ostr_regex}//g)
+        else
+            echo ${bin}" could not be found"
+        fi
     done
 }
 
