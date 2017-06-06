@@ -40,9 +40,6 @@ then
     # If DevDesktop is running, add DevDesktop tools
     # (this includes its versions of php and drush).
     export PATH="$PATH:/Applications/DevDesktop/tools"
-else
-    # Use DVM (Drush Version Manager).
-    export PATH=$PATH:$HOME/.dvm
 fi
 
 function toolset () {
