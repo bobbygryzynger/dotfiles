@@ -39,7 +39,7 @@ if [ ! -z "$(pgrep -x "Acquia Dev Desktop")" ];
 then
     # If DevDesktop is running, add DevDesktop tools
     # (this includes its versions of php and drush).
-    export PATH="$PATH:/Applications/DevDesktop/tools"
+    export PATH="/Applications/DevDesktop/tools:$PATH"
 fi
 
 function toolset () {
